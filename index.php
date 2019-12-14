@@ -27,13 +27,22 @@ else
 <body>
     <section class="congratulations">
         <h1>Congratulations!</h1>
-        <p>Your AWS Elastic Beanstalk <em>PHP</em> application is now running on your own dedicated environment in the AWS&nbsp;Cloud</p>
+        <p>Your AWS Elastic Beanstalk <em>PHP</em> application is now SECURED and running on your own dedicated environment in the AWS&nbsp;Cloud</p>
         <p>You are running PHP version <?= phpversion() ?></p>
+        <p>Latest example <a href="https://github.com/ctala/ebs-php-htaccess-security-headers" target="_blank">HERE<a></p>
          
         
     </section>
 
     <section class="instructions">
+    <h2>All Headers</h2>
+        <ul>
+        <?php 
+                    foreach (getallheaders() as $key => $value) {
+                       echo "<li>$key : $value</li>";
+                    }
+                ?>
+        </ul>
     <h2>Cookies created without HTTPOnly and Secure flag</h2>
     <ul>
                 <?php 
