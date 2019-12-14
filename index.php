@@ -7,6 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 }
 else
 {
+
+    $cookieParams = session_get_cookie_params();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,9 +29,19 @@ else
         <h1>Congratulations!</h1>
         <p>Your AWS Elastic Beanstalk <em>PHP</em> application is now running on your own dedicated environment in the AWS&nbsp;Cloud</p>
         <p>You are running PHP version <?= phpversion() ?></p>
+         
+        
     </section>
 
     <section class="instructions">
+    <h2>Cookies created without HTTPOnly and Secure flag</h2>
+    <ul>
+                <?php 
+                    foreach (session_get_cookie_params() as $key => $value) {
+                       echo "<li>$key : $value</li>";
+                    }
+                ?>
+              </ul>
         <h2>What's Next?</h2>
         <ul>
             <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/">AWS Elastic Beanstalk overview</a></li>

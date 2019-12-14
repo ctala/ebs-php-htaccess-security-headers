@@ -3,5 +3,8 @@
 	Header set X-XSS-Protection "1; mode=block"
 	Header always append X-Frame-Options SAMEORIGIN
 	Header set X-Content-Type-Options nosniff
-    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
 </IfModule>
+
+# Solving Cookies created without HTTPOnly and Secure flag  
+php_value session.cookie_httponly 1
+php_value session.cookie_secure 1
