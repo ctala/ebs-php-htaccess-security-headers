@@ -6,11 +6,16 @@ This example add the .htaccess file to AWS PHP Example for Elastic Beanstalk.
 
 ```
 # Extra Security Headers
+# Extra Security Headers
 <IfModule mod_headers.c>
 	Header set X-XSS-Protection "1; mode=block"
 	Header always append X-Frame-Options SAMEORIGIN
 	Header set X-Content-Type-Options nosniff
 </IfModule>
+
+# Solving Cookies created without HTTPOnly and Secure flag  
+php_value session.cookie_httponly 1
+php_value session.cookie_secure 1
 ```
 
 ## Nikto Vulnerability Scanner
